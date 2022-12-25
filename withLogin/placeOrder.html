@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover">
+    <title>FOODII</title>
+    <link rel="stylesheet" href="../CSS/index.css">
+    <link rel="stylesheet" href="../CSS/bootstrap.min.css">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../CSS/account.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+</head>
+
+<body>
+
+    <!-- desktop view -->
+    <div class="container7" style="grid-template-columns: 250px 1fr;" id="container">
+        <div id="menu">
+            <div class="title">
+                <img src="https://i.postimg.cc/Vs3yTqKx/foodii.png" alt="">
+            </div>
+            <div class="menu-item">
+                <a href="./home.html">Home</a>
+                <a href="./about.html">About Us</a>
+                <a href="./service.html">Services</a>
+                <a href="./order.html">Your Orders</a>
+
+                <a href="./contact_us.html">Contact Us</a>
+                <a href="./main.html">Checkout Menu</a>
+
+            </div>
+        </div>
+
+        <div id="food-container">
+            <div id="header">
+                <div class="add-box">
+                    <i class="fa fa-map-marker your-address" id="add-address"> Your Address</i>
+                </div>
+                <div class="util">
+                    <i class="fa fa-search"><a href="./search.html">Search</a> </i>
+                    <i class="fa fa-tags"><a href="./offers.html">Offers</a> </i>
+                    <i class="fa fa-cart-plus" id="cart-plus"> My Cart</i>
+                    <i class="fa fa-heart-o " style="background:transparent;" id="cart-plus1"> Wishlist</i>
+
+
+                    <i class="fa "> <a href="./eClub.html">eClub</a> </i>
+                    <i class="fa fa-user-circle" id="show-login2"> Account</i>
+                </div>
+            </div>
+            <div id="food-items" class="d-food-items">
+                <div>
+
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header msgSent justify-content-center">
+
+                                    <i class="fa-solid fa-circle-check"></i>
+                                    <h5 style="padding-left:10px ;">Order Placed Succussfully</h5>
+
+                                </div>
+                                <div class="modal-body text-center ">
+                                    <!-- <h5>Transaction ID : k2349990</h5> -->
+                                    <h1 class="">THANK YOU</h1>
+                                    <div class="visist">
+
+                                    </div>
+                                    <h3>Visit Again</h3>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal"
+                                        onclick="location.href='main.html'">Back to Home</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <section class="newArrival bodyBgClr">
+                        <div class="heading">
+                            <h2 class="h2">Checkout</h2>
+                            <p style="color:#3ae9d2 ;">Your infos are safe with us</p>
+                        </div>
+
+                        <div class="container cartContainer infoContainer">
+                            <form id="myForm" oninput="checkFields(event)">
+
+                                <h4>Contacts</h4>
+                                <div class="mandateInfo">
+                                    <div class="mandateInfoLabel">
+                                        <label for="name">Name</label><br>
+                                        <label for="mailID">Email Address</label><br>
+                                        <label for="pNo">Mobile</label><br>
+                                    </div>
+                                    <div class="mandateInfoinput">
+                                        <input type="text" id="name" name="fname" placeholder="Enter Your Name"><br>
+                                        <input type="email" id="mailID" name="mail"
+                                            placeholder="Enter Your Ragister Enail "><br>
+                                        <input type="email" id="pNo" name="mobile" placeholder="Mobile no."><br>
+
+                                    </div>
+
+                                </div>
+                                <h4>Address</h4>
+                                <div class="address">
+                                    <div class="addressLabel">
+                                        <label for="dNo">Apartment/Door no.</label><br>
+                                        <label for="add1">Address line 1</label><br>
+                                        <label for="add2">Address line 2</label>
+                                        <small
+                                            style="color: rgb(196, 196, 196); font-size: 15px;">(optional)</small><br>
+                                        <label for="city">City</label><br>
+                                        <label for="state">State</label><br>
+                                        <label for="country">Country</label><br>
+                                        <label for="pin">Pincode</label>
+                                    </div>
+                                    <div class="addressInput">
+                                        <input type="text" id="dNo" name="doorNo" placeholder="Apartment/Door no."><br>
+                                        <input type="text" name="add1" id="add1" placeholder="Address line 1"><br>
+                                        <input type="text" name="add2" id="add2" placeholder="Address line 2"><br>
+                                        <input type="text" name="city" id="city" placeholder="City"><br>
+                                        <input type="text" name="state" id="state" placeholder="State"><br>
+                                        <input type="text" name="country" id="country" placeholder="Country"><br>
+                                        <input type="text" name="pin" id="pin" placeholder="Pincode"><br>
+                                    </div>
+
+                                </div>
+                                <div class="payment">
+                                    <h4>Payment</h4>
+                                    <div>
+
+                                        <input type="radio" name="payment" id="p1" value="UPI"><label
+                                            for="p1">UPI</label>
+                                        <input type="radio" name="payment" id="p2" value="Net Banking"><label
+                                            for="p2">Net Banking</label>
+                                        <input type="radio" name="payment" id="p3" value="Debit/Credit card"><label
+                                            for="p3">Debit/Credit card</label>
+                                        <input type="radio" name="payment" id="p4" value="Cash on Delivery"><label
+                                            for="p4">Cash on Delivery</label>
+                                    </div>
+
+                                    <button type="submit" disabled class="addToCart placeOrder" type="button"
+                                        data-bs-toggle="modal" id="placeOrderBtn" data-bs-target="#staticBackdrop"
+                                        onclick="placeOrder()">Place Order</button>
+                                        <button class="wish-btn" id="check_btn" style="margin-left: 30px;"><a href="./main.html" style="color:#fff" required>Cancel Order</a> </button>
+                                </div>
+
+                            </form>
+
+
+                        </div>
+
+                        <br><br><br><br><br><br><br>
+
+
+
+
+                    </section>
+
+  
+                </div>
+
+
+
+
+
+
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+    </div>
+
+
+    <!-- Account -->
+    <div class="popup2">
+        <div class="close-btn">&times;</div>
+        <div class="form">
+            <h2>Profile </h2>
+            <div class="imag">
+                <img src="https://i.ibb.co/JBC9548/profile.jpg" alt="">
+                <div class="bt">
+                    <div class="form-element">
+                        <button class="bt4">Edit Profile</button>
+                    </div>
+                    <div class="form-element">
+                        <button class="bt5"><a href="../index.html">Log out</a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-element">
+                <label for="fname">Full Name</label>
+                <input type="text" name="" id="fname" placeholder="ABSVHDH JSJJASh">
+            </div>
+            <div class="form-element">
+                <label for="dob">Last Name</label>
+                <input type="date" name="" id="dob">
+            </div>
+            <div class="form-element">
+                <label for="mobile">Mobile No.</label>
+                <input type="text" name="" id="mobile" placeholder="Enter mobile number">
+            </div>
+            <div class="form-element">
+                <label for="gender2" style="padding-right: 20px;">Gender</label>
+                <input type="radio" name="gender" id="gender" value="Male">
+                <label for="gender1" style="padding-right: 20px;">Male</label>
+                <input type="radio" name="gender" id="gender1" value="Female">
+                <label for="gender">Female</label>
+            </div>
+            <div class="form-element">
+                <label for="email">Email</label>
+                <input type="email" name="" id="email" placeholder="Enter email">
+            </div>
+            <div class="form-element">
+                <label for="password">Password</label>
+                <input type="password" name="" id="password" placeholder="Enter password">
+            </div>
+            <div class="form-element">
+                <label for="address">Address</label>
+                <textarea name="" id="address" cols="30" rows="5" placeholder="Enter address "></textarea>
+
+                <div class="bt6">
+                    <div class="form-element">
+                        <button class="bt1">Save</button>
+                    </div>
+                    <div class="form-element">
+                        <button class="bt2">Reset</button>
+                    </div>
+                    <div class="form-element">
+                        <button class="bt3">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="full-footer">
+        <div class="container1 top-footer p-md-3 p-1">
+            <div class="row">
+                <div class="col-md-3 pl-4 pr-4">
+                    <img class="img-fluid" src="https://i.ibb.co/z2syjDJ/foodii.png" alt="">
+                    <p>
+                        Foodii is a food Delievery App <a href="#">Read
+                            more...</a>
+                    </p>
+                    <a style="color:silver; font-size: 50px;" class="p-1" href="https://www.facebook.com/"><i
+                            class="fa fa-facebook-square"></i></a>
+                    <a style="color: silver; font-size: 50px;" class="p-1" href="https://www.google.com/"><i
+                            class="fa fa-google-plus-square"></i></a>
+                    <a style="color: silver ;font-size: 50px;" class="p-1" href="https://www.twitter.com/"><i
+                            class="fa fa-twitter-square"></i></a>
+                    <a style="color: silver ;font-size: 50px;" class="p-1" href="https://www.instagram.com/"><i
+                            class="fa fa-instagram"></i></a>
+                </div>
+
+                <div class="col-md-3  pl-4 pr-4">
+                    <h3>Important Links</h3>
+                    <a href="#">Privacy Policy</a><br>
+                    <a href="#">Youtube Channel Link </a><br>
+                    <a href="#">Blog Articles </a><br>
+                    <a href="#">Social Media</a>
+                </div>
+
+                <div class="col-md-3  pl-4 pr-4">
+                    <h3>Our Services</h3>
+                    <a href="#">Live Order Tracking</a><br>
+                    <a href="#">No Minimum Order </a><br>
+                    <a href="#">Lightning-Fast Delivery </a><br>
+
+                </div>
+
+                <div class="col-md-3  pl-4 pr-4">
+                    <h3>Contact Us</h3>
+                    <a href="#"><i class="fa fa-phone"></i> +(91) 9090909090 </a><br>
+                    <a href="mailto:simplesnippetsinfo@gmail.com  "><i class="fa fa-envelope"></i> abc@gmail.com
+                    </a><br>
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241316.64333236168!2d72.74110193617271!3d19.082522317332813!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c6306644edc1%3A0x5da4ed8f8d648c69!2sMumbai%2C+Maharashtra!5e0!3m2!1sen!2sin!4v1547151374329"
+                            frameborder="0"></iframe>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </footer>
+
+
+    <script>
+
+
+
+        function checkFields(event) {
+
+            let name = document.getElementById('name')
+            let mailID = document.getElementById('mailID')
+            let pNo = document.getElementById('pNo')
+            let dNo = document.getElementById('dNo')
+            let add1 = document.getElementById('add1')
+            let city = document.getElementById('city')
+            let state = document.getElementById('state')
+            let country = document.getElementById('country')
+            let pin = document.getElementById('pin')
+            let paymethod1 = document.getElementById('p1')
+            let paymethod2 = document.getElementById('p2')
+            let paymethod3 = document.getElementById('p3')
+            let paymethod4 = document.getElementById('p4')
+
+            if (name.value != '' && mailID.value != '' && pNo.value != '' && dNo.value != '' && add1.value != '' && city.value != '' && state.value != '' && country.value != '' && pin.value != '') {
+                if (p1.checked || p2.checked || p3.checked || p4.checked)
+                    document.getElementById('placeOrderBtn').disabled = false;
+            }
+            else
+                document.getElementById('placeOrderBtn').disabled = true;
+
+        }
+
+
+        async function placeOrder() {
+            let order = ''
+            let subTotal = 0
+            let apiList = await getData()
+            for (let product of apiList) {
+                order += product.requiredQty + ' x ' + product.Name + " " + product.type + "(" + product.productsizeSelected + "), ";
+                subTotal += (product.newPrice * product.requiredQty);
+            }
+            let orderNo = (100000 + Math.random() * 900000).toFixed(0);
+            order = order.slice(0, -2)
+            clearCartList()
+
+            let dNo = document.getElementById('dNo')
+            let add1 = document.getElementById('add1')
+            let add2 = document.getElementById('add2')
+            let city = document.getElementById('city')
+            let state = document.getElementById('state')
+            let pin = document.getElementById('pin')
+            let paymethod1 = document.getElementById('p1')
+            let paymethod2 = document.getElementById('p2')
+            let paymethod3 = document.getElementById('p3')
+            let paymethod4 = document.getElementById('p4')
+            let address = '';
+            let modeOfpay = ''
+
+            if (paymethod1.checked)
+                modeOfpay = paymethod1.value
+            else if (paymethod2.checked)
+                modeOfpay = paymethod2.value
+            else if (paymethod3.checked)
+                modeOfpay = paymethod3.value
+            else if (paymethod4.checked)
+                modeOfpay = paymethod4.value
+
+            if (add2.value != '')
+                address = `${dNo.value}, ${add1.value}, ${add2.value}, ${city.value}, ${state.value}-${pin.value}`
+            else
+                address = `${dNo.value}, ${add1.value}, ${city.value}, ${state.value}-${pin.value}`
+
+
+            document.getElementById('orderSummary').innerHTML = `<h6><b> Order ID : <span style="color: rgb(255, 166, 0);">FOODII${orderNo}</span> </b></h6><br>
+                                                    <h6><b> Order:</b> ${order}</h6><br>
+                                                    <h6><b> Address:</b> ${address}</h6><br>
+                                                    <h6><b> Totol Amount:</b> &#8377; ${subTotal} + &#8377; 50(Delivery)</h6><br>
+                                                    <h6><b> Mode of Payment:</b> ${modeOfpay}</h6>`
+
+        }
+
+
+
+
+
+
+
+        // hamburger menu open/close
+
+        const bar = document.getElementById('bar');
+        const nav = document.getElementById('nav');
+        const close = document.getElementById('close')
+        if (bar)
+            bar.addEventListener('click', () => nav.classList.add('active'));
+        if (close)
+            close.addEventListener('click', () => nav.classList.remove('active'))
+
+
+
+
+
+        document.getElementById('add-address').addEventListener('click', addAddress);
+
+
+        function addAddress() {
+            var address = prompt('Enter your address', '');
+            if (address) {
+                document.getElementById('add-address').innerText = ' ' + address;
+            }
+            else {
+                alert("Address not added")
+            }
+        }
+
+
+        document.querySelector("#show-login2").addEventListener("click", function () {
+            document.querySelector(".popup2").classList.add("active")
+        });
+
+        document.querySelector(".popup2 .close-btn").addEventListener("click", function () {
+            document.querySelector(".popup2").classList.remove("active")
+        });
+    </script>
+    <script src="../index.js" type="module"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Login</title>
+	<style>
+		body {
+			background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+		}
+
+		.registerlink {
+			margin-left: 100px;
+		}
+
+		.registerlink span {
+			color: #000000;
+			font-size: 25px;
+
+		}
+
+		.registerlink a {
+			text-decoration: none;
+			color: green;
+			font-size: 20px
+		}
+
+		.shadow {
+			box-shadow: 2px 2px 15px rgb(164, 226, 19);
+		}
+
+		.box {
+			border-radius: 10px;
+			padding-top: 20px;
+			padding-bottom: 20px;
+		}
+
+		.navbarColor {
+			background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+		}
+		#t {
+    text-align: left !important;
+    color: white;
+    font-size: 30px;
+    font-family: 'Playball', cursive;
+    font-size: 50px;
+    padding-left: 2%;
+    letter-spacing: 3px;
+    line-height: 5px;
+
+}
+	</style>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+	
+
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	
+<nav class="navbar navbar-dark bg-dark">
+	<a class="navbar-brand" href="#">
+	  <img src="https://i.postimg.cc/Vs3yTqKx/foodii.png" width="100" height="100" class="d-inline-block align-center" alt="">
+	  <span id="t">FOODII</span>
+	</a>
+  </nav>
+
+
+	<div class="container ">
+		
+		<br>
+		<h1 class="text-white text-center font-weight-bold bg-primary rounded" style="font-size: 55px;"> Login </h1>
+		<div class="col-lg-6 m-auto d-block bg-info box ">
+
+			<form action="#"  class="bg-light rounded p-5 shadow ">
+
+
+				<div class="form-group">
+					<label class="font-weight-bold"> Email: </label>
+					<input type="text" name="email" class="form-control" id="email" autocomplete="on">
+					<span id="emailids" class="text-danger font-weight-bold"> </span>
+				</div>
+
+				<div class="form-group">
+					<label class="font-weight-bold"> Password: </label>
+					<input type="password" name="pass" class="form-control" id="password" autocomplete="on">
+					
+					<span id="passwords" class="text-danger font-weight-bold"><i class="password showHide fa-solid fa-eye-slash " id="showHide1"  onclick="showHidePassword(event)"></i> </span>
+				</div>
+
+
+
+
+				<input type="button" name="submit" value="Login" class="btn btn-success " onclick="getUsersData()">
+
+
+
+
+			</form><br>
+			<div class="form-group">
+				<a href="./passReset.html" class="text-right" style="color:orangered ; font-size:20px">Forgot password?</a>
+
+			</div>
+			<div class="registerlink">
+				<span>Not Registered ?</span><a href="./sing_up.html" id="singup">Click here</a>
+			</div>
+<br><br>
+			<div style="color: #610e15;">
+				<h5>For Test Admin:</h5>
+				<p>Email:- admin@gmail.com , Password:- 12345678</p>
+
+			</div>
+
+
+		</div>
+	</div>
+
+
+
+	<script type="text/javascript">
+
+		    
+let url = "https://63875a99d9b24b1be3edf154.mockapi.io/foodii";
+        async function getUsersData() {
+            let email = document.getElementById("email").value.toLowerCase();
+            let password = document.getElementById("password").value;
+
+            if (email == "") {
+                alert("Email field should not be blank");
+                document.getElementById("email").focus();
+                return false;
+            }
+            if (password == "") {
+                alert("Password field should not be blank");
+                document.getElementById("password").focus();
+                return false;
+            }
+            let user_found = false;
+			if(email=="admin@gmail.com" && password=="12345678"){
+				// user_found = true;
+                alert("Logged in successfully");
+                       
+                 window.location.href = "../admin/adminDashboard.html";
+				
+
+			}else{
+				try {
+                let data = await fetch(url)
+                let res = await data.json()
+
+                res.forEach(element => {
+                    if (element.email === email && element.password === password) {
+                        user_found = true;
+                        alert("Logged in successfully");
+                       
+                        window.location.href = "../withLogin/home.html";
+                        return;
+                    }
+
+                });
+
+                if (!user_found) {
+                    
+                    alert("Incorrect Email or Password");
+                };
+
+            }
+            catch (err) {
+                alert(err);
+                console.log(err)
+            }
+			}
+        }
+
+		function showHidePassword(event){
+    let showHideBtn = document.getElementById(event.target.id);
+    if(showHideBtn.classList[3]=='fa-eye-slash'){
+        showHideBtn.classList.remove('fa-eye-slash');
+        showHideBtn.classList.add('fa-eye');
+        document.getElementById(showHideBtn.classList[0]).setAttribute('type','text');
+    }else{
+        showHideBtn.classList.add('fa-eye-slash');
+        showHideBtn.classList.remove('fa-eye');
+        document.getElementById(showHideBtn.classList[0]).setAttribute('type','password');
+    }
+}
+	</script>
+	<script src="https://kit.fontawesome.com/94c64997a1.js" crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>

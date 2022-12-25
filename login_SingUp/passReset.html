@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Password</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+
+
+    <style>
+		body {
+			background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+		}
+
+		.registerlink {
+			margin-left: 100px;
+		}
+
+		.registerlink span {
+			color: #000000;
+			font-size: 25px;
+
+		}
+
+		.registerlink a {
+			text-decoration: none;
+			color: green;
+			font-size: 20px
+		}
+
+		.shadow {
+			box-shadow: 2px 2px 15px rgb(164, 226, 19);
+		}
+
+		.box {
+			border-radius: 10px;
+			padding-top: 20px;
+			padding-bottom: 20px;
+		}
+
+		.navbarColor {
+			background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+		}
+		#t {
+    text-align: left !important;
+    color: white;
+    font-size: 30px;
+    font-family: 'Playball', cursive;
+    font-size: 50px;
+    padding-left: 2%;
+    letter-spacing: 3px;
+    line-height: 5px;
+
+}
+	</style>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+	
+
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    
+</head>
+
+<body>
+   
+
+
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+          <img src="https://i.postimg.cc/Vs3yTqKx/foodii.png" width="100" height="100" class="d-inline-block align-center" alt="">
+          <span id="t">FOODII</span>
+        </a>
+      </nav>
+
+    <div class="container ">
+		
+		<br>
+		<h1 class="text-white text-center font-weight-bold bg-primary rounded" style="font-size: 55px;"> Reset Password</h1>
+		<div class="col-lg-6 m-auto d-block bg-info box ">
+
+			<form action="#"  class="bg-light rounded p-5 shadow ">
+
+
+				
+
+				<div class="form-group">
+					<label class="font-weight-bold"> Email: </label>
+					<input type="email" name="email" class="form-control" id="resetUsername" autocomplete="off">
+					
+					
+				</div>
+
+
+
+
+				<input type="button" name="submit" value="Reset Password" class="btn btn-success " onclick="resetPassword()">
+
+                <a href="./log_in.html">Sign in</a>
+
+
+			</form>
+
+
+  
+  
+    <script>
+        function resetPassword() {
+            let resetEmail = document.getElementById('resetUsername').value.toLowerCase();
+            if (ValidateEmail(resetEmail)){
+                alert("Reset link sent via email.");
+                window.location.href="./log_in.html";
+            }
+            
+        }
+        function ValidateEmail(mail) {
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+        return (true);
+    }
+    alert("You have entered an invalid email address!");
+    return (false);
+}
+        
+
+    </script>
+</body>
+
+</html>

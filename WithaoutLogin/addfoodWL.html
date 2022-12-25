@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./addfood.css" class="css">
+    <title>FOODII</title>
+  </head>
+  <style>
+
+*{
+    margin: 0;
+    padding: 0;
+
+}
+body{
+    background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+}
+    i{
+      font-size: 24px;
+    }
+  </style>
+  <body>
+
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="./index.html">
+            <img src="https://i.ibb.co/z2syjDJ/foodii.png" alt="" width="30" height="24" class="d-inline-block align-text-top" alt="" width="30" height="24" class="d-inline-block align-text-top">
+            FOODII
+          </a>
+        </div>
+    </nav>
+
+    <div class="container w-50 mt-3 border">
+      
+            <div class="row mb-3 mt-3">
+              <label for="name1" class="col-sm-2 col-form-label">Name</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="name1">
+              </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="categary" class="col-sm-2 col-form-label">Categary</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="categary">
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="rating" class="col-sm-2 col-form-label"> Rating</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="rating">
+                </div>
+            </div>
+
+                <div class="row mb-3">
+                    <label for="price" class="col-sm-2 col-form-label"> Price</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="price">
+                </div>
+                </div>
+                    <div class="row mb-3">
+                        <label for="img" class="col-sm-2 col-form-label"> img</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="img">
+                    </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="quntity" class="col-sm-2 col-form-label"> Quntity</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="quntity">
+                    </div>
+                    </div>
+            <button type="submit" class="btn btn-primary mb-3 col-md-3 offset-md-5"
+            onclick="addTask()" 
+            >Add Food</button>
+       
+    </div>
+    <div id="error">
+
+    </div>
+
+    <div id="productsDiv">
+
+    </div>
+  </body>
+  <script>
+    var name1=document.getElementById('name1')
+var categary=document.getElementById('categary')
+var rating=document.getElementById('rating')
+var price=document.getElementById('price')
+var img=document.getElementById('img')
+var quntity=document.getElementById('quntity')
+var productsDiv=document.getElementById('productsDiv')
+var count=0;
+function addTask(){
+    
+    console.log("Task Added"+ count)
+      
+    if(name1.value!=""&&categary.value!=""&&rating.value!=""&&price.value!=""&&img.value!=""&&quntity.value!=""){
+        count++;
+        createDiv(count) 
+        name1.value="";
+        categary.value="";
+        rating.value="";
+        price.value="";
+        img.value="";
+        quntity.value="";
+    }
+    else{
+        document.getElementById('error').innerText="Enter all the details"
+    }
+    
+}
+
+function createDiv(count){
+    var taskDiv=document.createElement('div')
+    taskDiv.id="taskDiv"+count;
+    taskDiv.classList.add("card","w-50","mt-2","m-auto","text-center")
+    taskDiv.innerHTML+=` 
+    
+   
+  <div class="card-header">
+    ID: ${count}
+  </div>
+  <div class="card-body">
+  <h5 class="card-title" id="name1${count}" contentEditable="false">${name1.value}</h5>
+  <p class="card-text"  id="categary${count}" contentEditable="false">${categary.value}</p>
+  <p class="card-text"  id="rating${count}" contentEditable="false">${rating.value}</p>
+  <p class="card-text"  id="price${count}" contentEditable="false">${price.value}</p>
+  <p class="card-text"  id="img${count}" contentEditable="false">${img.value}</p>
+  <p class="card-text"  id="quntity${count}" contentEditable="false">${quntity.value}</p>
+    <button id="edit${count}" class="btn btn-primary" onclick="editTask(${count})"><i class="fa-solid fa-pen-to-square"></i></button>
+    <button id="delete${count}"class="btn btn-danger" onclick="deleteTask(${count})"><i class="fa-solid fa-trash-can"></i></button>
+    <button id="save${count}"class="btn btn-success" onclick="saveTask(${count})"><i class="fa-solid fa-floppy-disk"></i></button>
+  </div>
+   
+    `
+    productsDiv.append(taskDiv)
+    productsDiv.style.border="2px solid black"
+}
+// edit
+function editTask(id){
+    console.log("Task edited successfully")
+    // title/date/desc
+    // specific ids
+    document.getElementById("name1"+id).contentEditable="true"
+    document.getElementById("categary"+id).contentEditable="true"
+    document.getElementById("rating"+id).contentEditable="true"
+    document.getElementById("price"+id).contentEditable="true"
+    document.getElementById("img"+id).contentEditable="true"
+    document.getElementById("quntity"+id).contentEditable="true"
+
+
+    // document.getElementById("title").value=document.getElementById("title"+id).value
+
+    document.getElementById("name1"+id).style.backgroundColor="lightgrey"
+    document.getElementById("categary"+id).style.backgroundColor="lightgrey"
+    document.getElementById("rating"+id).style.backgroundColor="lightgrey"
+    document.getElementById("price"+id).style.backgroundColor="lightgrey"
+    document.getElementById("img"+id).style.backgroundColor="lightgrey"
+    document.getElementById("quntity"+id).style.backgroundColor="lightgrey"
+    // above div inputbox id.value=id.value
+
+}
+
+// delete
+function deleteTask(id){
+    console.log("Task deleted successfully")
+    let deleteRequest="Are you sure you want to delete this task?"
+    if(confirm(deleteRequest)==true){
+        document.getElementById("taskDiv"+id).remove()
+    }  
+
+}
+// update/save
+// edit
+function saveTask(id){
+    console.log("Task updated successfully")
+    // title/date/desc
+    // specific ids
+    document.getElementById("name1"+id).contentEditable="false"
+    document.getElementById("categary"+id).contentEditable="false"
+    document.getElementById("rating"+id).contentEditable="false"
+    document.getElementById("price"+id).contentEditable="false"
+    document.getElementById("img"+id).contentEditable="false"
+    document.getElementById("quntity"+id).contentEditable="false"
+
+    // document.getElementById("title").value=document.getElementById("title"+id).value
+
+    document.getElementById("name1"+id).style.backgroundColor="white"
+    document.getElementById("categary"+id).style.backgroundColor="white"
+    document.getElementById("rating"+id).style.backgroundColor="white"
+    document.getElementById("price"+id).style.backgroundColor="white"
+    document.getElementById("img"+id).style.backgroundColor="white"
+    document.getElementById("quntity"+id).style.backgroundColor="white"
+    // above div inputbox id.value=id.value
+
+}
+  </script>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Sing Up</title>
+	<style>
+		body {
+			background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+		}
+
+		.loginclik {
+			margin-left: 30px;
+		}
+
+		.loginclik span {
+			color: black;
+			font-size: 20px;
+
+		}
+
+		.loginclik a {
+			text-decoration: none;
+			color: green;
+			font-size: 15px;
+		}
+
+		.shadow {
+			box-shadow: 2px 2px 15px rgb(164, 226, 19);
+		}
+
+		.box {
+			border-radius: 10px;
+			padding-top: 20px;
+		}
+
+		#phone {
+			padding-right: 25px;
+			background: url("https://i.ibb.co/8XFd2rP/viber.png") no-repeat left;
+			background-size: 20px;
+			text-align: center;
+
+		}
+
+		#username {
+			padding-right: 25px;
+			background: url("https://i.ibb.co/FBt64ym/user-1.png") no-repeat left;
+			background-size: 20px;
+			text-align: center;
+
+		}
+
+		#email {
+			padding-right: 25px;
+			background: url("https://i.ibb.co/dMFHq1j/gmail.png") no-repeat left;
+			background-size: 20px;
+			text-align: center;
+		}
+
+		#password, #conPassword {
+			padding-right: 25px;
+			background: url("https://i.ibb.co/KN6m7C1/lock.png") no-repeat left;
+			background-size: 20px;
+			text-align: center;
+		}
+
+		#login {
+			padding: 5px;
+			text-align: center;
+			position: relative;
+			width: 50%;
+			margin-top: 5%;
+			border-radius: 10px;
+			letter-spacing: 2px;
+			border: 2px solid #dddddd;
+			color: white;
+			font-family: 'Noto Sans Wancho', sans-serif;
+			font-weight: bold;
+			background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+			font-size: 18px;
+			transition: .7s;
+		}
+	</style>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.1.min.js"
+		integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<nav class="navbar navbar-dark bg-dark">
+		<a class="navbar-brand" href="#">
+		  <img src="https://i.postimg.cc/Vs3yTqKx/foodii.png" width="60" height="60" class="d-inline-block align-center" alt="">
+		  <span id="t">FOODII</span>
+		</a>
+	  </nav>
+
+
+	<div class="container "><br>
+		<h1 class="text-white text-center font-weight-bold bg-primary rounded" style="font-size: 55px;"> Sing up </h1>
+		<div class="col-lg-6 m-auto d-block box bg-info ">
+
+			<form action="#" class="bg-light rounded p-5 shadow">
+
+				<div class="form-group">
+					<label for="user" for="user" class="font-weight-bold"> Username: </label>
+					<input type="text" name="user" class="form-control" id="username">
+					
+				</div>
+
+
+
+				<div class="form-group">
+					<label for="mobileNumber" class="font-weight-bold"> Mobile Number: </label>
+					<input type="text" name="mobile" class="form-control" id="phone" onkeypress="return /[0-9]/i.test(event.key)"
+					maxlength="10">
+					
+				</div>
+
+				<div class="form-group">
+					<label for="emails" class="font-weight-bold"> Email: </label>
+					<input type="text" name="email" class="form-control" id="email">
+					
+				</div>
+
+				<div class="form-group">
+					<label for="pass" class="font-weight-bold"> Password: </label>
+					<input type="text" name="pass" class="form-control" id="password"><i class="password showHide fa-solid fa-eye-slash " id="showHide"  onclick="showHidePassword(event)"></i>
+					
+				</div>
+
+				<div class="form-group">
+					<label for="conpass" class="font-weight-bold"> Confirm Password: </label>
+					<input type="text" name="conpass" class="form-control" id="conPassword"><i class="conPassword showHide fa-solid fa-eye-slash " id="showHide1"  onclick="showHidePassword(event)"></i>
+					
+				</div>
+
+				<input type="button" name="submit" value="Register"  id="login" onclick="createNewUsersData()">
+
+
+
+			</form><br>
+			<div class="loginclik">
+				<span>If you already register ?</span><a href="./log_in.html">Clik here<b> to go login</b></a>
+			</div>
+			<br>
+
+
+		</div>
+	</div>
+
+
+
+	<script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+        async function createNewUsersData() {
+        var username = document.getElementById("username").value.toLowerCase();
+        var password = document.getElementById("password").value.toLowerCase();
+		var conPassword = document.getElementById("conPassword").value;
+        var email = document.getElementById("email").value;
+        var phone = document.getElementById("phone").value;
+        var s="@";
+        let url = 'https://63875a99d9b24b1be3edf154.mockapi.io/foodii';
+		// let user_found = false
+            let newUser =
+            {
+                "name":`${username}`,
+                "email":`${email}`,
+                "password":`${password}`,
+                "phone":` ${phone}`
+            }
+            if(username.length==0){
+                alert("Please provide username")
+            }
+            else if(phone.length<=9){
+               alert("please provide Phone number")
+            }
+           else if(password.length<=8){
+                alert("Password maximum should be above 8 characters")
+            }
+			else if(!( conPassword == password)){
+                alert("Password Missmatch")
+				return;
+            }
+            else if(email.length===0&&email!=s){
+                alert("please provide a valid Email Id")
+				
+			}
+            // else if(user_found = false){
+				
+            //     let data = await fetch(url)
+            //     let res = await data.json()
+
+            //     res.forEach(element => {
+            //         if (element.name === username) {
+            //             user_found = true;
+            //             alert("Username already exist");
+            //             return false;
+            //         }
+            //         if (element.email === email) {
+            //             user_found = true;
+            //             alert("Email id already registered");
+            //             return false;
+            //         }
+            //         if (element.mobile === phone) {
+            //             user_found = true;
+            //             alert("Mobile number already registered");
+            //             return false;
+            //         }
+			// })}
+		
+			// }
+			else{
+                let data = await fetch(url, {
+                method: "POST",
+                headers: { 'Content-Type': "application/json" },
+                body: JSON.stringify(newUser)
+            })
+            let res = await data.json();
+            console.log(res)
+            console.log(username,email,password,phone)
+            alert("you have successfully reigstered")
+			window.location.href=('./log_in.html')
+            sendEmail()
+            }
+            function sendEmail() {
+            var email = document.getElementById("email").value
+            var username = document.getElementById("username").value
+            Email.send({
+                SecureToken : "fbf31702-bb7f-4a4e-9c1c-4ccf17ee777f",
+                To: email,
+                From: "atulchougale96@gmail.com",
+                Subject: `Welcome to FOODII`,
+                Body:`Hey ${username}, we are happy that your are here.
+				"your are successfully registered"
+                We will be more than happy to serve you quality and delicious food.`
+            }).then(
+                message => alert(message)
+            );
+        }
+	}
+      
+	function showHidePassword(event){
+    let showHideBtn = document.getElementById(event.target.id);
+    if(showHideBtn.classList[3]=='fa-eye-slash'){
+        showHideBtn.classList.remove('fa-eye-slash');
+        showHideBtn.classList.add('fa-eye');
+        document.getElementById(showHideBtn.classList[0]).setAttribute('type','text');
+    }else{
+        showHideBtn.classList.add('fa-eye-slash');
+        showHideBtn.classList.remove('fa-eye');
+        document.getElementById(showHideBtn.classList[0]).setAttribute('type','password');
+    }
+}
+    </script>
+	<script src="https://kit.fontawesome.com/94c64997a1.js" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

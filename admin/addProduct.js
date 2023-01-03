@@ -1,39 +1,39 @@
 
-// get User Data 
+// get food Data 
 
 async function getData()
 {
     let data= await fetch("https://6381eefa9842ca8d3c9d0014.mockapi.io/foodiis");
-    let userData=await data.json();
-    console.log(userData);
+    let foodData=await data.json();
+    console.log(foodData);
    
-    createUser(userData);
+    createfood(foodData);
 }
  getData();
 
 
- // Create User
+ // Create food
 
 tmpData= document.getElementById("tbData"); 
 
-function createUser(a){
+function createfood(a){
      console.log(a)
      tmpData.innerHTML=``
-     a.forEach(user =>{ 
+     a.forEach(food =>{ 
         tmpData.innerHTML +=` 
             <tr>
-            <td>${user.id}</td>
-            <td>${user.name}</td>;
-            <td>${user.category}</td>;
-            <td>${user.rating}</td>;
-            <td>${user.price}</td>;
-            <td>${user.image}</td>;
-            <td>${user.quantity}</td>;
-            <td>${user.most}</td>;
+            <td>${food.id}</td>
+            <td>${food.name}</td>;
+            <td>${food.category}</td>;
+            <td>${food.rating}</td>;
+            <td>${food.price}</td>;
+            <td>${food.image}</td>;
+            <td>${food.quantity}</td>;
+            <td>${food.most}</td>;
    
-            <td><button class='btn btn-primary'  data-toggle="modal" data-target="#editModal" onclick='editModal(${user.id})'>Edit</button></td>;
+            <td><button class='btn btn-primary'  data-toggle="modal" data-target="#editModal" onclick='editModal(${food.id})'>Edit</button></td>;
           
-            <td><button class='btn btn-danger' onclick='deleteUser(${user.id})'>Delete</button></td>;
+            <td><button class='btn btn-danger' onclick='deletefood(${food.id})'>Delete</button></td>;
             </tr>
    `
    })
@@ -41,21 +41,21 @@ function createUser(a){
 }
 
 
-// Delete User Data
-async function  deleteUser(id)
+// Delete food Data
+async function  deletefood(id)
 {
  let data= await fetch(`https://6381eefa9842ca8d3c9d0014.mockapi.io/foodiis/${id}`,
                 {method:"delete"
                  })
- let user= await data.json();
-  console.log(user)
+ let food= await data.json();
+  console.log(food)
   getData();
 }
 
 
-// Add User Data
+// Add food Data
 
-async function addUser()
+async function addfood()
 {
   name=document.querySelector("#name").value;
   category=document.querySelector("#category").value;
@@ -102,7 +102,7 @@ let Uid
 async function editModal(id)
 {
   let data= await fetch(`https://6381eefa9842ca8d3c9d0014.mockapi.io/foodiis/${id}`);
-  user=await data.json()
+  food=await data.json()
 
   name1=document.querySelector("#name1");
   category=document.querySelector("#category1");
@@ -112,23 +112,23 @@ async function editModal(id)
   quantity=document.querySelector("#quantity1");
   most=document.querySelector("#most1");
 
-   Uid=user.id;
+   Uid=food.id;
 
-   name1.value=user.name;
-   category.value=user.category;
-   rating.value=user.rating;
-   price.value=user.price;
-   image.value=user.image;
-   quantity.value=user.quantity;
-   most.value=user.most;
+   name1.value=food.name;
+   category.value=food.category;
+   rating.value=food.rating;
+   price.value=food.price;
+   image.value=food.image;
+   quantity.value=food.quantity;
+   most.value=food.most;
 
-  console.log(user)
+  console.log(food)
 }
 
 
-// Edit User
+// Edit food
 
-async function editUser()
+async function editfood()
 {
   name=document.querySelector("#name1").value;
   category=document.querySelector("#category1").value;
@@ -158,4 +158,55 @@ async function editUser()
   })
   console.log(put)
   getData();
+}
+   
+// custemor list 
+
+let url = 'https://63875a99d9b24b1be3edf154.mockapi.io/foodii';
+
+
+
+async function getData1()
+{
+    let data= await fetch(url);
+    let userData=await data.json();
+    console.log(userData);
+   
+    createUser1(userData);
+}
+ getData1();
+
+
+ tmpData= document.getElementById("tbData1"); 
+
+function createUser1(a){
+     console.log(a)
+     tmpData.innerHTML=``
+     a.forEach(user =>{ 
+        tmpData.innerHTML +=` 
+            <tr>
+            <td></td>
+            <td>${user.name}</td>;
+            <td>${user.email}</td>;
+            <td>${user.phone}</td>;
+         
+   
+            
+            <td><button class='btn btn-danger' onclick='deleteuser(${user.id})'>Delete</button></td>;
+            </tr>
+   `
+   })
+ 
+}
+
+
+// Delete user Data
+async function  deleteuser(id)
+{
+ let data= await fetch(url+`/${id}`,
+                {method:"delete"
+                 })
+ let user= await data.json();
+  console.log(user)
+  getData1();
 }

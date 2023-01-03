@@ -2,8 +2,8 @@
 async function getData()
 {
     let data= await fetch("https://6381eefa9842ca8d3c9d0014.mockapi.io/foodiis");
-    let userData=await data.json();
-    console.log(userData);
+    let FoodData=await data.json();
+    console.log(FoodData);
    
     displayItems();
 }
@@ -51,7 +51,7 @@ async function displayItems(){
                 <i class="fa fa-star" id="rating"> ${item.rating}</i>
                 <i class="fa fa-edit edit" id=${item.id} data-toggle="modal" data-target="#editModal" onclick='editModal(${item.id})'></i>
                 
-                <i class="fa fa-trash-o delete" id=${item.id} onclick='deleteUser(${item.id})' ></i>
+                <i class="fa fa-trash-o delete" id=${item.id} onclick='deleteFood(${item.id})' ></i>
             </div>
             <img src="${item.image}">
             <p id="item-name">${item.name}</p>
@@ -70,7 +70,7 @@ async function displayItems(){
                 <i class="fa fa-star" id="rating"> ${item.rating}</i>
                 <i class="fa fa-edit edit" id=${item.id} data-toggle="modal" data-target="#editModal" onclick='editModal(${item.id})'></i>
                 
-                <i class="fa fa-trash-o delete" id=${item.id} onclick='deleteUser(${item.id})' ></i>
+                <i class="fa fa-trash-o delete" id=${item.id} onclick='deleteFood(${item.id})' ></i>
             
             </div>
             <img src="${item.image}">
@@ -90,7 +90,7 @@ async function displayItems(){
                 <i class="fa fa-star" id="rating"> ${item.rating}</i>
                 <i class="fa fa-edit edit" id=${item.id} data-toggle="modal" data-target="#editModal" onclick='editModal(${item.id})'></i>
                 
-                <i class="fa fa-trash-o delete" id=${item.id} onclick='deleteUser(${item.id})' ></i>
+                <i class="fa fa-trash-o delete" id=${item.id} onclick='deleteFood(${item.id})' ></i>
             
             </div>
             <img src="${item.image}">
@@ -110,7 +110,7 @@ async function displayItems(){
                 <i class="fa fa-star" id="rating"> ${item.rating}</i>
                 <i class="fa fa-edit edit" id=${item.id} data-toggle="modal" data-target="#editModal" onclick='editModal(${item.id})'></i>
                 
-                <i class="fa fa-trash-o delete" id=${item.id} onclick='deleteUser(${item.id})' ></i>
+                <i class="fa fa-trash-o delete" id=${item.id} onclick='deleteFood(${item.id})' ></i>
             
             </div>
             <img src="${item.image}">
@@ -132,7 +132,7 @@ async function displayItems(){
                 <i class="fa fa-star" id="rating"> ${item.rating}</i>
                 <i class="fa fa-edit edit" id=${item.id} data-toggle="modal" data-target="#editModal" onclick='editModal(${item.id})'></i>
                 
-                <i class="fa fa-trash-o delete" id=${item.id} onclick='deleteUser(${item.id})' ></i>
+                <i class="fa fa-trash-o delete" id=${item.id} onclick='deleteFood(${item.id})' ></i>
             
             </div>
             <img src="${item.image}">
@@ -155,7 +155,7 @@ async function displayItems(){
                 <i class="fa fa-star" id="rating"> ${item.rating}</i>
                 <i class="fa fa-edit edit" id=${item.id} data-toggle="modal" data-target="#editModal" onclick='editModal(${item.id})'></i>
                 
-                <i class="fa fa-trash-o delete" id=${item.id} onclick='deleteUser(${item.id})' ></i>
+                <i class="fa fa-trash-o delete" id=${item.id} onclick='deleteFood(${item.id})' ></i>
             
             </div>
             <img src="${item.image}">
@@ -174,7 +174,7 @@ async function displayItems(){
                 <i class="fa fa-star" id="rating"> ${item.rating}</i>
                 <i class="fa fa-edit edit" id=${item.id} data-toggle="modal" data-target="#editModal" onclick='editModal(${item.id})'></i>
                 
-                <i class="fa fa-trash-o delete" id=${item.id} onclick='deleteUser(${item.id})' ></i>
+                <i class="fa fa-trash-o delete" id=${item.id} onclick='deleteFood(${item.id})' ></i>
             
             </div>
             <img src="${item.image}">
@@ -190,8 +190,8 @@ async function displayItems(){
 
 
 
- // Delete User Data
-async function  deleteUser(id)
+ // Delete Food Data
+async function  deleteFood(id)
 {
  let data= await fetch(`https://6381eefa9842ca8d3c9d0014.mockapi.io/foodiis/${id}`,
                 {method:"delete"
@@ -231,9 +231,9 @@ async function editModal(id)
 }
 
 
-// Edit User
+// Edit Food
 
-async function editUser()
+async function editFood(Uid)
 {
   name=document.querySelector("#name1").value;
   category=document.querySelector("#category1").value;

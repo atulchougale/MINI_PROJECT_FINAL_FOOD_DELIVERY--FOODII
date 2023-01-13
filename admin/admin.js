@@ -42,10 +42,12 @@ async function displayItems(){
     const kolhapuriSpecialeData= res.filter((item)=>item.category=='Kolhapuri_Speciale');
 
     
+    
     biryaniData.map(item=>{
         var itemCard= document.createElement('div');
         itemCard.setAttribute('id','item-card')
-
+        // itemCard.innerHTML =``;
+    
        itemCard.innerHTML +=`
             <div id="card-top">
                 <i class="fa fa-star" id="rating"> ${item.rating}</i>
@@ -64,7 +66,7 @@ async function displayItems(){
     chickenData.map(item=>{
         var itemCard= document.createElement('div');
         itemCard.setAttribute('id','item-card')
-
+        
        itemCard.innerHTML +=`
             <div id="card-top">
                 <i class="fa fa-star" id="rating"> ${item.rating}</i>
